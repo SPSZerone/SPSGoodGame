@@ -3,11 +3,11 @@
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 
-__SPS_GG__NS__U_EXTEND_COCOS2DX;
+__SPS_GG__NS__U_PLATFORM;
 
 
 
-NetworkHelper *NetworkHelper::GetInstance()
+NetworkHelper *NetworkHelper::get_instance()
 {
 	if ( _gg_g_NetworkHelper == nullptr )
 	{

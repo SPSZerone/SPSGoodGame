@@ -7,7 +7,7 @@
 
 
 
-__SPS_GG__NS__B_EXTEND_COCOS2DX
+__SPS_GG__NS__B_PLATFORM
 
 class NetworkHelperIOS : public NetworkHelper
 {
@@ -31,7 +31,7 @@ public:
 	virtual const std::string & GetIPAddress() override;
 }; // end class NetworkHelperIOS
 
-__SPS_GG__NS__END // end __SPS_GG__NS__B_EXTEND_COCOS2DX
+__SPS_GG__NS__END // end __SPS_GG__NS__B_PLATFORM
 
 
 

@@ -1,6 +1,6 @@
 ﻿#include "AppHelperIOS.h"
 #if ( __SPS_GG__TARGET_PLATFORM == __SPS_GG__PLATFORM__IOS )
-__SPS_GG__NS__U_EXTEND_COCOS2DX;
+__SPS_GG__NS__U_PLATFORM;
 
 
 

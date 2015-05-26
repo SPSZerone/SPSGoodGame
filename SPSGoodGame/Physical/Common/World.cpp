@@ -89,42 +89,7 @@ void World::CreateWorldBoundary( float fOriginX, float fOriginY, float fWidth, f
 
 void World::CreateWorldBoundaryByPixel( float fOriginX, float fOriginY, float fWidth, float fHeight )
 {
-#if ( ( defined( __SPS_GG__SUPPORT__BOX2D ) ) && ( __SPS_GG__SUPPORT__BOX2D ) )
-	if ( _gg_pB2World == nullptr )
-	{
-		return ;
-	}
-
-	
-	b2BodyDef bodyDef;
-	b2EdgeShape edgeShape;
-	b2FixtureDef fixtureDef;
-
-
-	bodyDef.type = b2_staticBody;
-	bodyDef.position.Set( fOriginX, fOriginY );
-
-	fixtureDef.shape = &edgeShape;
-
-
-	b2Body *worldBody = _gg_pB2World->CreateBody( &bodyDef );
-
-	// Left vertical
-	edgeShape.Set( b2Vec2( 0.0f, 0.0f ), b2Vec2( 0.0f, fHeight / _gg_fPTMRadio ) );
-	worldBody->CreateFixture( &fixtureDef );
-
-	// Right vertical
-	edgeShape.Set( b2Vec2( fWidth / _gg_fPTMRadio, 0.0f ), b2Vec2( fWidth / _gg_fPTMRadio, fHeight / _gg_fPTMRadio ) );
-	worldBody->CreateFixture( &fixtureDef );
-
-	// Top horizontal
-	edgeShape.Set( b2Vec2( 0.0f, fHeight / _gg_fPTMRadio ), b2Vec2( fWidth / _gg_fPTMRadio, fHeight / _gg_fPTMRadio ) );
-	worldBody->CreateFixture( &fixtureDef );
-
-	// Bottom horizontal
-	edgeShape.Set( b2Vec2( 0.0f, 0.0f ), b2Vec2( fWidth / _gg_fPTMRadio, 0.0f ) );
-	worldBody->CreateFixture( &fixtureDef );
-#endif // #if ( ( defined( __SPS_GG__SUPPORT__BOX2D ) ) && ( __SPS_GG__SUPPORT__BOX2D ) )
+	CreateWorldBoundary(fOriginX / _gg_fPTMRadio, fOriginY / _gg_fPTMRadio, fWidth / _gg_fPTMRadio, fHeight / _gg_fPTMRadio);
 }
 
 

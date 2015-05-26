@@ -7,7 +7,7 @@
 
 
 
-__SPS_GG__NS__B_EXTEND_COCOS2DX
+__SPS_GG__NS__B_PLATFORM
 
 class AppHelperIOS : public AppHelper
 {
@@ -35,7 +35,7 @@ public:
 	virtual const long OpenUrl( const std::string &strUrl ) override;
 }; // end class AppHelperIOS
 
-__SPS_GG__NS__END // end __SPS_GG__NS__B_EXTEND_COCOS2DX
+__SPS_GG__NS__END // end __SPS_GG__NS__B_PLATFORM
 
 
 
