@@ -30,6 +30,7 @@ protected:
 	PhysicalNodeListener *_gg_pListener;
 	Mat4 _gg_modelViewMV;
     CustomCommand _gg_customCommand;
+	bool _gg_isShowDebugDraw;
 
 
 public:
@@ -45,6 +46,8 @@ public:
 
 	virtual void SetListener( PhysicalNodeListener *pListener );
 	virtual PhysicalNodeListener *GetListener();
+	
+	virtual void SwitchDebugDraw(bool isShowDebugDraw);
 
     virtual void update( float delta ) override;
 

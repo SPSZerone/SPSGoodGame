@@ -8,6 +8,7 @@ PhysicalNode::PhysicalNode()
 {
 	_gg_pWorld = nullptr;
 	_gg_pListener = nullptr;
+	_gg_isShowDebugDraw = false;
 }
 
 
@@ -49,6 +50,11 @@ PhysicalNodeListener *PhysicalNode::GetListener()
 	return _gg_pListener;
 }
 
+
+void PhysicalNode::SwitchDebugDraw(bool isShowDebugDraw)
+{
+	_gg_isShowDebugDraw = isShowDebugDraw;
+}
 
 
 void PhysicalNode::update( float delta )
@@ -124,17 +130,20 @@ void PhysicalNode::draw( Renderer *pRenderer, const Mat4& transform, uint32_t fl
 {
     Node::draw( pRenderer, transform, flags );
 
-    GL::enableVertexAttribs( cocos2d::GL::VERTEX_ATTRIB_FLAG_POSITION );
-    Director* director = Director::getInstance();
-    director->pushMatrix( MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW );
+	if (_gg_isShowDebugDraw)
+	{
+		GL::enableVertexAttribs( cocos2d::GL::VERTEX_ATTRIB_FLAG_POSITION );
+		Director* director = Director::getInstance();
+		director->pushMatrix( MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW );
     
-    _gg_modelViewMV = director->getMatrix( MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW );
+		_gg_modelViewMV = director->getMatrix( MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW );
 
-    _gg_customCommand.init( _globalZOrder );
-    _gg_customCommand.func = CC_CALLBACK_0( PhysicalNode::OnDraw, this );
-    pRenderer->addCommand( &_gg_customCommand );
+		_gg_customCommand.init( _globalZOrder );
+		_gg_customCommand.func = CC_CALLBACK_0( PhysicalNode::OnDraw, this );
+		pRenderer->addCommand( &_gg_customCommand );
 
-    director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
+		director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
+	}
 }
 
 
